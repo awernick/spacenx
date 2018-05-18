@@ -16,10 +16,10 @@ all: $(PROGRAM).nso $(PROGRAM).nro
 	$(AS) $(AS_FLAGS) $< -filetype=obj -o $@
 
 $(PROGRAM).nso.so: ${OBJ} $(LIBTRANSITOR_NSO_LIB) $(LIBTRANSISTOR_COMMON_LIBS)
-	$(LD) $(LD_FLAGS) -lm -o $@ ${OBJ} $(LIBTRANSISTOR_NSO_LDFLAGS)
+	$(LD) $(LD_FLAGS) -lm -o $@ ${OBJ} $(LIBTRANSISTOR_NSO_LDFLAGS) -lSDL2
 
 $(PROGRAM).nro.so: ${OBJ} $(LIBTRANSITOR_NRO_LIB) $(LIBTRANSISTOR_COMMON_LIBS)
-	$(LD) $(LD_FLAGS) -lm -o $@ ${OBJ} $(LIBTRANSISTOR_NRO_LDFLAGS)
+	$(LD) $(LD_FLAGS) -lm -o $@ ${OBJ} $(LIBTRANSISTOR_NRO_LDFLAGS) -lSDL2
 
 clean:
 	rm -rf *.o *.nso *.nro *.so

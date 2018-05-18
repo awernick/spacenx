@@ -9,7 +9,12 @@
 
 void init(struct Graphics* g)
 {
-	if(SDL_Init(SDL_INIT_VIDEO) < 0) {
+
+	#if defined(__SDL2__)
+		SDL_SetHint(SDL_HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS,"1");
+	#endif
+
+	if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_JOYSTICK) < 0) {
 		printf("SDL init failed: %s\n", SDL_GetError());
 		return;
 	}
